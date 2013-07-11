@@ -28,7 +28,7 @@ public class Credits extends JDialog {
         getContentPane().add(creditsContainer);
 
 
-        creditsContainer.add(new JLabel("Made by Furling and Pideeh :D"));
+        creditsContainer.add(new JLabel("Made by Furling and Pideeeh :D"));
         creditsContainer.add(new JButton(new AbstractAction("Close", null) {
             public void actionPerformed(ActionEvent e) {
                 Credits.getThisInstance().dispose();
