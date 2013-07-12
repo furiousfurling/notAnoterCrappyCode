@@ -19,7 +19,7 @@ DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 Document doc = dBuilder.parse(root);
 doc.getDocumentElement().normalize();
-NodeList nodes = doc.getElementsByTagName("stock");
+NodeList nodes = doc.getElementsByTagName("config");
 
 
 for (int i = 0; i < nodes.getLength(); i++) {

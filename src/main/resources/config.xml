@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<root>
-    <stock>
-        <ResX>1920</ResX>
-        <ResY>1080</ResY>
-        <Playername>name</Playername> 
-    </stock>
-</root>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><root><config><ResX>1000</ResX><ResY>1000</ResY><playername>Pideeeh</playername></config></root>

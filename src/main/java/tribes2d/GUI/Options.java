@@ -18,6 +18,7 @@ public class Options extends JDialog
     private static Options optionsDialog;
     JPanel optionsContainer;
     String ResX,ResY,Playername;
+    JTextField jTextField0,jTextField1,jTextField2;
     public Options(JFrame frame, boolean modal)
     {
         super(frame, modal);
@@ -25,6 +26,7 @@ public class Options extends JDialog
         this.ResX=tribes2d.xmlreadwrite.XMLRead.resX;
         this.ResY=tribes2d.xmlreadwrite.XMLRead.resY;
         this.Playername=tribes2d.xmlreadwrite.XMLRead.playername;
+        
         optionsDialog = this;
         optionsContainer = new JPanel();
         optionsContainer.setSize(800, 600);
@@ -32,16 +34,17 @@ public class Options extends JDialog
         getContentPane().add(optionsContainer);
         
         optionsContainer.add(new JLabel("ResolutionX:"));
-        optionsContainer.add(new JTextField(ResX,10));
+        optionsContainer.add(jTextField0= new JTextField(ResX,10));
         optionsContainer.add(new JLabel("ResolutionY:"));
-        optionsContainer.add(new JTextField(ResY,10));
+        optionsContainer.add(jTextField1=new JTextField(ResY,10));
         optionsContainer.add(new JLabel("Playername:"));
-        optionsContainer.add(new JTextField(Playername,10));
+        optionsContainer.add(jTextField2=new JTextField(Playername,10));
         optionsContainer.add(new JButton(new AbstractAction("Accept",null) {
 
             public void actionPerformed(ActionEvent e) 
             {
-                tribes2d.xmlreadwrite.XMLWrite(jTextField0.getText(),jTextField1.getText(),jTextField2.getText());
+                tribes2d.xmlreadwrite.XMLWrite.main(jTextField0.getText(),
+                        jTextField1.getText(),jTextField2.getText());
                 Options.getThisInstance().dispose();
             }
         }));
