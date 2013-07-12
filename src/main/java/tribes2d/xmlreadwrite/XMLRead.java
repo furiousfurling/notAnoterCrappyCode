@@ -11,10 +11,10 @@ import org.w3c.dom.NodeList;
 public class XMLRead 
 {
     static public String resX,resY,playername;
-    public static void main(String args[]) {
+    public static void main() {
 try {
 
-File root = new File("config.xml");
+File root = new File("src/main/resources/config.xml");
 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 Document doc = dBuilder.parse(root);

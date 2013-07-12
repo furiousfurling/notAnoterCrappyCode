@@ -23,9 +23,10 @@ public class Options extends JDialog
     public Options(JFrame frame, boolean modal)
     {
         super(frame, modal);
-        ResX=tribes2d.xmlreadwrite.XMLRead.resX;
-        ResY=tribes2d.xmlreadwrite.XMLRead.resY;
-        Playername=tribes2d.xmlreadwrite.XMLRead.playername;
+        tribes2d.xmlreadwrite.XMLRead.main();
+        this.ResX=tribes2d.xmlreadwrite.XMLRead.resX;
+        this.ResY=tribes2d.xmlreadwrite.XMLRead.resY;
+        this.Playername=tribes2d.xmlreadwrite.XMLRead.playername;
         optionsDialog = this;
         optionsContainer = new JPanel();
         optionsContainer.setSize(800, 600);
