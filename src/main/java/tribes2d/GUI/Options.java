@@ -11,8 +11,6 @@ import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JDialog;
 import tribes2d.misc.Defaults;
-import tribes2d.xmlreadwrite.XMLRead;
-import tribes2d.xmlreadwrite.XMLWrite;
 import javax.swing.BorderFactory;
 
 public class Options extends JDialog
@@ -43,7 +41,7 @@ public class Options extends JDialog
 
             public void actionPerformed(ActionEvent e) 
             {
-                
+                tribes2d.xmlreadwrite.XMLWrite(jTextField0.getText(),jTextField1.getText(),jTextField2.getText());
                 Options.getThisInstance().dispose();
             }
         }));

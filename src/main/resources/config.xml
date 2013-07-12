@@ -3,7 +3,6 @@
     <stock>
         <ResX>1920</ResX>
         <ResY>1080</ResY>
-        <Playername>name</Playername>
-        
+        <Playername>name</Playername> 
     </stock>
 </root>
