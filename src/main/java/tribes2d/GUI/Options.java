@@ -11,17 +11,21 @@ import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JDialog;
 import tribes2d.misc.Defaults;
-import java.io.*;
+import tribes2d.xmlreadwrite.XMLRead;
+import tribes2d.xmlreadwrite.XMLWrite;
 import javax.swing.BorderFactory;
 
 public class Options extends JDialog
 {
     private static Options optionsDialog;
     JPanel optionsContainer;
-    
+    String ResX,ResY,Playername;
     public Options(JFrame frame, boolean modal)
     {
         super(frame, modal);
+        ResX=tribes2d.xmlreadwrite.XMLRead.resX;
+        ResY=tribes2d.xmlreadwrite.XMLRead.resY;
+        Playername=tribes2d.xmlreadwrite.XMLRead.playername;
         optionsDialog = this;
         optionsContainer = new JPanel();
         optionsContainer.setSize(800, 600);
@@ -29,19 +33,23 @@ public class Options extends JDialog
         getContentPane().add(optionsContainer);
         
         optionsContainer.add(new JLabel("ResolutionX:"));
-        optionsContainer.add(new JTextField(10));
+        optionsContainer.add(new JTextField(ResX,10));
         optionsContainer.add(new JLabel("ResolutionY:"));
-        optionsContainer.add(new JTextField(10));
+        optionsContainer.add(new JTextField(ResY,10));
+        optionsContainer.add(new JLabel("Playername:"));
+        optionsContainer.add(new JTextField(Playername,10));
         optionsContainer.add(new JButton(new AbstractAction("Accept",null) {
 
-            public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            public void actionPerformed(ActionEvent e) 
+            {
+                
+                Options.getThisInstance().dispose();
             }
         }));
         optionsContainer.add(new JButton(new AbstractAction("Abort",null) {
 
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Options.getThisInstance().dispose(); 
             }
         }));
         
