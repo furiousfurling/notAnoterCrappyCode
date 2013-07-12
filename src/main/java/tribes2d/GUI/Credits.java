@@ -18,7 +18,7 @@ public class Credits extends JDialog {
 
     private static Credits creditsDialog;
     JPanel creditsContainer;
-
+    
     public Credits(JFrame frame, boolean modal, String myMessage) {
         super(frame, modal);
         creditsDialog = this;

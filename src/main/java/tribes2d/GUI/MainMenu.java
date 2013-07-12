@@ -76,7 +76,13 @@ public class MainMenu extends JPanel {
                 
             }
         });
-
+        viewOptions.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //Open Options
+                new Options(MainWindow.getThisInstance(),true);
+                
+            }
+        });
         exitGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //Close the window
