@@ -1,6 +1,7 @@
 package tribes2d.player;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
@@ -22,8 +23,8 @@ public class PlayerDefault {
 
         ImageIcon ii = new ImageIcon(getClass().getClassLoader().getResource("defaultPlayer.png"));
         image = ii.getImage();
-        x = 40;
-        y = 100;
+        x = Toolkit.getDefaultToolkit().getScreenSize().width/2;
+        y = Toolkit.getDefaultToolkit().getScreenSize().height/2;
     }
 
 

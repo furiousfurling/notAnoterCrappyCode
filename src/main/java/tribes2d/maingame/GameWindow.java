@@ -8,20 +8,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import tribes2d.map.LoadMap;
 import tribes2d.player.PlayerDefault;
 
-public class GameWindow extends JPanel implements ActionListener{
+public class GameWindow extends JPanel implements ActionListener {
 
     private Timer timer;
     private PlayerDefault player;
-    
-    public GameWindow(){
+    private boolean mapNotLoaded = true;
+
+    public GameWindow() {
         addKeyListener(new TAdapter());
         setFocusable(true);
-        setBackground(Color.BLACK);
+        setBackground(Color.BLUE);
         setDoubleBuffered(true);
 
         player = new PlayerDefault();
@@ -29,27 +34,31 @@ public class GameWindow extends JPanel implements ActionListener{
         timer = new Timer(5, this);
         timer.start();
     }
-    
-    public void initGamePanel(JFrame parent){
-        
-    
+
+    public void initGamePanel(JFrame parent) {
     }
 
     public void paint(Graphics g) {
         super.paint(g);
 
-        Graphics2D g2d = (Graphics2D)g;
+        Graphics2D g2d = (Graphics2D) g;
+        if (mapNotLoaded) {
+            try {
+                new LoadMap(g, null, this);
+            } catch (IOException ex) {
+                Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         g2d.drawImage(player.getImage(), player.getX(), player.getY(), this);
-
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
 
     public void actionPerformed(ActionEvent e) {
         player.move();
-        repaint();  
+        repaint();
     }
-    
+
     private class TAdapter extends KeyAdapter {
 
         public void keyReleased(KeyEvent e) {
@@ -60,6 +69,4 @@ public class GameWindow extends JPanel implements ActionListener{
             player.keyPressed(e);
         }
     }
-    
-    
 }
