@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import tribes2d.map.LoadMap;
 import tribes2d.player.PlayerDefault;
+import java.awt.image.BufferedImage;
 
 public class GameWindow extends JPanel implements ActionListener {
 
@@ -45,10 +46,15 @@ public class GameWindow extends JPanel implements ActionListener {
         if (mapNotLoaded) {
             try {
                 new LoadMap(g, null, this);
+                mapNotLoaded=false;
             } catch (IOException ex) {
                 Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        else
+            {
+                LoadMap.paintComponent(g,LoadMap.level);
+            }
         g2d.drawImage(player.getImage(), player.getX(), player.getY(), this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();

@@ -13,9 +13,10 @@ import javax.swing.JPanel;
  *
  */
 public class LoadMap {
+    public static BufferedImage level;
 
     public LoadMap(Graphics g, File mapFile, JPanel parent) throws IOException {
-        BufferedImage level = new BufferedImage(128*16, 128*16, BufferedImage.TYPE_INT_ARGB_PRE);
+        level = new BufferedImage(128*16, 128*16, BufferedImage.TYPE_INT_ARGB_PRE);
         BufferedImage levelElement = null;
         //Temporary for now
         int[][] tempTestMap = generateTestMap();
@@ -41,10 +42,10 @@ public class LoadMap {
         
     }
 
-    public void paintComponent(Graphics grafica, BufferedImage image) {
+    public static void paintComponent(Graphics grafica, BufferedImage image) {
         grafica.drawImage(image, 0, 0, null); //no need for ImageObserver here
     }
-
+    
     private int[][] generateTestMap() {
         int[][] testMap = new int[128][128];
         
