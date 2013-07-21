@@ -17,15 +17,15 @@ public class Options extends JDialog
 {
     private static Options optionsDialog;
     JPanel optionsContainer;
-    String ResX,ResY,Playername;
+    int ResX,ResY;
+    String playername;
     JTextField jTextField0,jTextField1,jTextField2;
     public Options(JFrame frame, boolean modal)
     {
         super(frame, modal);
-        tribes2d.xmlreadwrite.XMLRead.main();
-        this.ResX=tribes2d.xmlreadwrite.XMLRead.resX;
-        this.ResY=tribes2d.xmlreadwrite.XMLRead.resY;
-        this.Playername=tribes2d.xmlreadwrite.XMLRead.playername;
+        ResX=tribes2d.xmlreadwrite.XMLRead.getResX();
+        ResY=tribes2d.xmlreadwrite.XMLRead.getResY();
+        playername=tribes2d.xmlreadwrite.XMLRead.getPlayerName();
         
         optionsDialog = this;
         optionsContainer = new JPanel();
@@ -34,18 +34,22 @@ public class Options extends JDialog
         getContentPane().add(optionsContainer);
         
         optionsContainer.add(new JLabel("ResolutionX:"));
-        optionsContainer.add(jTextField0= new JTextField(ResX,10));
+        optionsContainer.add(jTextField0= new JTextField(ResX+"",10));
         optionsContainer.add(new JLabel("ResolutionY:"));
-        optionsContainer.add(jTextField1=new JTextField(ResY,10));
+        optionsContainer.add(jTextField1=new JTextField(ResY+"",10));
         optionsContainer.add(new JLabel("Playername:"));
-        optionsContainer.add(jTextField2=new JTextField(Playername,10));
+        optionsContainer.add(jTextField2=new JTextField(playername,10));
         optionsContainer.add(new JButton(new AbstractAction("Accept",null) {
 
             public void actionPerformed(ActionEvent e) 
             {
-                tribes2d.xmlreadwrite.XMLWrite.main(jTextField0.getText(),
-                        jTextField1.getText(),jTextField2.getText());
+                ResX= Integer.parseInt(jTextField0.getText());
+                ResY= Integer.parseInt(jTextField1.getText());
+                playername = jTextField1.getText();
+                tribes2d.xmlreadwrite.XMLWrite.WriteConfig(ResX+"",
+                        ResY+"",playername);
                 Options.getThisInstance().dispose();
+                System.out.println("ELLO");
             }
         }));
         optionsContainer.add(new JButton(new AbstractAction("Abort",null) {
