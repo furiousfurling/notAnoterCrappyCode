@@ -45,11 +45,10 @@ public class Options extends JDialog
             {
                 ResX= Integer.parseInt(jTextField0.getText());
                 ResY= Integer.parseInt(jTextField1.getText());
-                playername = jTextField1.getText();
+                playername = jTextField2.getText();
                 tribes2d.xmlreadwrite.XMLWrite.WriteConfig(ResX+"",
                         ResY+"",playername);
                 Options.getThisInstance().dispose();
-                System.out.println("ELLO");
             }
         }));
         optionsContainer.add(new JButton(new AbstractAction("Abort",null) {
